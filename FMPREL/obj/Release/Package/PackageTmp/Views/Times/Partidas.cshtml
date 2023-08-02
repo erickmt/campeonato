@@ -1,0 +1,15 @@
+﻿@model IEnumerable<FMPREL.Controllers.DtoJogoRodada>
+
+@foreach (var item in Model)
+{
+    <a class="item">
+        <span class="championship"> @Html.DisplayFor(modelItem => item.data)</span>
+        <span class="teams-wrap">
+            <span class="team"><span><img src="~/images/soccer/@Html.DisplayFor(modelItem => item.logoA)" alt="team-logo"></span><span> @Html.DisplayFor(modelItem => item.timeA)</span></span>
+            <span class="score"><span> @Html.DisplayFor(modelItem => item.placar)</span></span>
+            <span class="team1"><span> @Html.DisplayFor(modelItem => item.timeB)</span><span><img src="~/images/soccer/@Html.DisplayFor(modelItem => item.logoB)" alt="team-logo"></span></span>
+        </span>
+        <span class="game-result"> @Html.DisplayFor(modelItem => item.horario)</span>
+    </a>
+}
+

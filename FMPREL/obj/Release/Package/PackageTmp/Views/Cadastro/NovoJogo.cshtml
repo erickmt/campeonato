@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "NovoJogo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--BREADCRUMBS BEGIN-->
+<section class="image-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info">
+                    <div class="wrap">
+                        <ul class="breadcrumbs">
+                            <li><a href="@Url.Action("Index", "Home")">Inicio</a>/</li>
+                            <li>Novo Jogo</li>
+                        </ul>
+                        <h1>Cadastrar Novo Jogo</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--BREADCRUMBS END-->
+<!--CHECKOUT WRAP BEGIN-->
+<section class="checkout-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Times</h4>
+                <div class="customer-info">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert team-alert fade in" role="alert" id="alerta" hidden>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="item">
+                                <label>
+                                    <span>Primeiro Time <i>*</i></span>
+                                    @Html.DropDownList("Times1", (ViewBag.Times1 as SelectList), htmlAttributes: new { @class = "basic form-control" })
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="item">
+                                <label>
+                                    <span>Segundo Time <i>*</i></span>
+                                    @Html.DropDownList("Times2", (ViewBag.Times2 as SelectList), htmlAttributes: new { @class = "basic form-control" })
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="item">
+                                <label>
+                                    <span>Rodada <i>*</i></span>
+                                    @Html.DropDownList("Rodada", (ViewBag.Rodada as SelectList), htmlAttributes: new { @class = "basic form-control" })
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="item">
+                                <label>
+                                    <span>Horário</span>
+                                    <select class="basic" id="horarios">
+                                        <option value="1">13:00 Horas</option>
+                                        <option value="2">14:00 Horas</option>
+                                        <option value="3">15:00 Horas</option>
+                                        <option value="4">16:00 Horas</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cart-total col-md-12">
+                            <button id="inserirJogo" class="proceed">Inserir<i class="fa fa-check" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script type="text/javascript">
+        function BuscaHorarios() {
+            $.ajax({
+                type: 'POST',
+                url: '/Cadastro/Horarios',
+                data: 'rodada=' + $('#Rodada').val(),
+                success: function (result) {
+                    var horarios = JSON.parse(result);
+                    for (var i = 0; i < horarios.length; i++) {
+                        $('#Rodada').val("3");
+                        $('#horarios').append($('<option>', {
+                            value: horarios[i]["Id"],
+                            text: horarios[i]["Hora"]
+                        }));
+                    }
+                }
+            })
+        }
+
+        $('#inserirJogo').click(function () {
+            if ($('#Times1').val() == $('#Times2').val()) {
+                $('#alerta').show();
+                $('#alerta').html('<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa - close" aria-hidden="true"></span></button>Insira 2 times diferentes');
+                return;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/Cadastro/InserirNovoJogo',
+                data: 'time1=' + $('#Times1').val() + "&time2=" + $('#Times2').val() + "&rodada=" + $('#Rodada').val() + "&horario=" + $('#horarios').val(),
+                success: function (data) {
+                    if (data.resultado == "ok") {
+                        $('#alerta').show();
+                        $('#alerta').html('<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa - close" aria-hidden="true"></span></button>' + data.mensagem);
+                    }
+                }
+            })
+        });
+
+    </script>
+}

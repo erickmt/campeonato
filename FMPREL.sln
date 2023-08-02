@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMPREL", "FMPREL\FMPREL.csproj", "{EF4B2B66-855F-4B38-B9F7-2B52DD9BDC3F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF4B2B66-855F-4B38-B9F7-2B52DD9BDC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF4B2B66-855F-4B38-B9F7-2B52DD9BDC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF4B2B66-855F-4B38-B9F7-2B52DD9BDC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF4B2B66-855F-4B38-B9F7-2B52DD9BDC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F4D3320-73CD-4CD5-906F-41718D0F818D}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://erickmt.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = FMPREL\\FMPREL.csproj
+		SccProjectName1 = FMPREL
+		SccLocalPath1 = FMPREL
+	EndGlobalSection
+EndGlobal

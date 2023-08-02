@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Team HTML</title>
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+
+    @Styles.Render("~/css/library/bootstrap.css")
+    @Styles.Render("~/dev-assets/preloader-default.css")
+    @Styles.Render("~/dev-assets/demo-switcher.css")
+</head>
+<body>
+    <div class="preloader-wrapper" id="preloader">
+        <div class="motion-line dark-big"></div>
+        <div class="motion-line yellow-big"></div>
+        <div class="motion-line dark-small"></div>
+        <div class="motion-line yellow-normal"></div>
+        <div class="motion-line yellow-small1"></div>
+        <div class="motion-line yellow-small2"></div>
+    </div>
+
+    <!--MAIN MENU WRAP BEGIN-->
+    <div class="main-menu-wrap sticky-menu">
+        <div class="container">
+            <a class="custom-logo-link"><img src="~/images/soccer/logo.png" alt="logo" class="custom-logo"></a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#team-menu" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <nav class="navbar">
+                <div class="collapse navbar-collapse" id="team-menu">
+                  <ul class="main-menu nav">
+                    <li>
+                      <a href="@Url.Action("Index", "Home")"><span>Início</span></a>
+                    </li>
+                    <li>
+                      <a href="#"><span>Classificação</span></a>
+                      <ul>
+                        <li><a href="@Url.Action("Index", "Grupos")"><span>Grupos</span></a></li>
+                        <li><a href="@Url.Action("Index", "Eliminatorias")"><span>Eliminatórias</span></a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="@Url.Action("Index", "Partidas")"><span>Partidas</span></a>
+                    </li>
+                    <li>
+                      <a href="@Url.Action("Index", "Times")"><span>Times</span></a>
+                    </li>
+                    <li>
+                      <a href="@Url.Action("Index", "Artilheiros")"><span>Artilheiros</span></a>
+                    </li>
+                    <li>
+                      <a href="@Url.Action("Index", "Cartoes")"><span>Cartões</span></a>
+                    </li>
+                    <li>
+                      <a href="@Url.Action("Index", "Melhores")"><span>Melhores</span></a>
+                    </li>
+                    @*<li>
+                      <a href="#"><span>Configurações</span></a>
+                      <ul>
+                          <li><a href="#"><span>Jogo Realizado</span></a></li>
+                        <li><a href="#"><span>Novo Jogo</span></a></li>
+                        <li><a href="#"><span>Melhores</span></a></li>
+                        <li><a href="#"><span>Cartões</span></a></li>
+                      </ul>
+                    </li>*@
+                  </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!--MAIN MENU WRAP END-->
+
+    @RenderBody()
+
+
+
+    <!--FOOTER BEGIN-->
+    <footer class="footer">
+        <div class="wrapper-overfllow">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="footer-left">
+                            <div class="wrap" style="margin-top: -50px">
+                                <img src="~/images/soccer/logo2_.png" alt="footer-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-menu-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="#top" class="foot-up"><span>Subir <i class="fa fa-caret-up" aria-hidden="true"></i></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="copyrights">
+                            <a>FMPREL</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="created">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--FOOTER END-->
+    @Scripts.Render("~/js/library/jquery.js")
+    @Scripts.Render("~/js/library/jquery-ui.js")
+    @Scripts.Render("~/js/library/bootstrap.js")
+    @Scripts.Render("~/js/library/jquery.sticky.js")
+    @Scripts.Render("~/js/library/jquery.jcarousel.js")
+    @Scripts.Render("~/js/library/jcarousel.connected-carousels.js")
+    @Scripts.Render("~/js/library/owl.carousel.js")
+    @Scripts.Render("~/js/library/progressbar.js")
+    @Scripts.Render("~/js/library/jquery.bracket.min.js")
+    @Scripts.Render("~/js/library/chartist.js")
+    @Scripts.Render("~/js/library/Chart.js")
+    @Scripts.Render("~/js/library/fancySelect.js")
+    @Scripts.Render("~/js/library/isotope.pkgd.js")
+    @Scripts.Render("~/js/library/imagesloaded.pkgd.js")
+    @Scripts.Render("~/js/jquery.team-coundown.js")
+    @Scripts.Render("~/js/matches-slider.js")
+    @Scripts.Render("~/js/header.js")
+    @Scripts.Render("~/js/matches_broadcast_listing.js")
+    @Scripts.Render("~/js/news-line.js")
+    @Scripts.Render("~/js/match_galery.js")
+    @Scripts.Render("~/js/main-club-gallery.js")
+    @Scripts.Render("~/js/product-slider.js")
+    @Scripts.Render("~/js/circle-bar.js")
+    @Scripts.Render("~/js/standings.js")
+    @Scripts.Render("~/js/shop-price-filter.js")
+    @Scripts.Render("~/js/timeseries.js")
+    @Scripts.Render("~/js/radar.js")
+    @Scripts.Render("~/js/slider.js")
+    @Scripts.Render("~/js/preloader.js")
+    @Scripts.Render("~/js/diagram.js")
+    @Scripts.Render("~/js/bi-polar-diagram.js")
+    @Scripts.Render("~/js/label-placement-diagram.js")
+    @Scripts.Render("~/js/donut-chart.js")
+    @Scripts.Render("~/js/animate-donut.js")
+    @Scripts.Render("~/js/advanced-smil.js")
+    @Scripts.Render("~/js/svg-path.js")
+    @Scripts.Render("~/js/pick-circle.js")
+    @Scripts.Render("~/js/horizontal-bar.js")
+    @Scripts.Render("~/js/gauge-chart.js")
+    @Scripts.Render("~/js/stacked-bar.js")
+    @Scripts.Render("~/js/library/chartist-plugin-legend.js")
+    @Scripts.Render("~/js/library/chartist-plugin-threshold.js")
+    @Scripts.Render("~/js/library/chartist-plugin-pointlabels.js")
+    @Scripts.Render("~/js/treshold.js")
+    @Scripts.Render("~/js/visible.js")
+    @Scripts.Render("~/js/anchor.js")
+    @Scripts.Render("~/js/landing_carousel.js")
+    @Scripts.Render("~/js/landing_sport_standings.js")
+    @Scripts.Render("~/js/twitterslider.js")
+    @Scripts.Render("~/js/champions.js")
+    @Scripts.Render("~/js/landing_mainnews_slider.js")
+    @Scripts.Render("~/js/carousel.js")
+    @Scripts.Render("~/js/video_slider.js")
+    @Scripts.Render("~/js/footer_slides.js")
+    @Scripts.Render("~/js/player_test.js")
+    @Scripts.Render("~/js/main.js")
+
+    @Scripts.Render("~/dev-assets/demo-switcher.js")
+
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>

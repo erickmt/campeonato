@@ -1,0 +1,49 @@
+﻿@model IEnumerable<FMPREL.Models.JogadorDto>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="main-players-stat bg-cover">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <h4 class="hockey-stats-h4">Melhores Jogadores</h4>
+                <div class="team-best-player">
+                    <div class="">
+                        <ul class="player-filters" role="tablist">
+                            <li class="active">
+                                <a href="#jogadores" role="tab" data-toggle="tab">Jogador</a>
+                            </li>
+                            <li>
+                                <a href="#goleiros" role="tab" data-toggle="tab">Goleiro</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="best-players-list tab-pane active" id="jogadores">
+                            @foreach (var item in Model.Where(x => !x.Goleiro))
+                            {
+                                <a class="item" style="padding-left:10px">
+                                    <span>@Html.DisplayFor(modelItem => item.Nome)</span>
+                                    <span class="achievement">@Html.DisplayFor(modelItem => item.Quantidade)</span>
+                                </a>
+                            }
+                        </div>
+                        <div class="best-players-list tab-pane" id="goleiros">
+                            @foreach (var item in Model.Where(x => x.Goleiro))
+                            {
+                                <a class="item" style="padding-left:10px">
+                                    <span>@Html.DisplayFor(modelItem => item.Nome)</span>
+                                    <span class="achievement">@Html.DisplayFor(modelItem => item.Quantidade)</span>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

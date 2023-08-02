@@ -1,0 +1,145 @@
+﻿@model IEnumerable<FMPREL.Models.GrupoDto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--BREADCRUMBS BEGIN-->
+<section class="image-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info">
+                    <div class="wrap">
+                        <ul class="breadcrumbs">
+                            <li><a href="@Url.Action("Index", "Home")">Inicio</a>/</li>
+                            <li>Classificação / </li>
+                            <li>Grupos</li>
+                        </ul>
+                        <h1>Classificação</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--BREADCRUMBS END-->
+
+<section class="club-main-stat">
+    <div class="container">
+        <div class="col-md-12">
+            <h4>FMPREL 2019</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h6>Grupo A</h6>
+                <div class="club-standings overflow-scroll">
+                    <table class="table-standings">
+                        <tr>
+                            <th style="text-align: center">Posição</th>
+                            <th>Time</th>
+                            <th>J</th>
+                            <th>V</th>
+                            <th>D</th>
+                            <th>E</th>
+                            <th>GF</th>
+                            <th>GS</th>
+                            <th>CA</th>
+                            <th>CV</th>
+                            <th>Saldo</th>
+                            <th>P</th>
+                        </tr>
+                        @foreach (var item in Model.Where(x => x.Grupo == "A"))
+                        {
+                            <tr>
+                                <td style="text-align: center">@Html.DisplayFor(modelItem => item.Posicao)</td>
+                                @if (item.Posicao < 5)
+                                {
+                                    <td class="up" style="text-align: left">
+
+                                        <i class="fa fa-circle" aria-hidden="true"></i>
+                                        <span class="team"><img src="/images/soccer/@Html.DisplayFor(modelItem => item.Logo)" width="30" height="30" alt="team-logo"></span> <span>@Html.DisplayFor(modelItem => item.Time)</span>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="none" style="text-align: left">
+
+                                        <i class="fa fa-circle" aria-hidden="true"></i>
+                                        <span class="team"><img src="/images/soccer/@Html.DisplayFor(modelItem => item.Logo)" width="30" height="30" alt="team-logo"></span> <span>@Html.DisplayFor(modelItem => item.Time)</span>
+                                    </td>
+                                }
+                                <td>@Html.DisplayFor(modelItem => item.Jogos)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Vitorias)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Derrotas)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Empates)</td>
+                                <td>@Html.DisplayFor(modelItem => item.GF)</td>
+                                <td>@Html.DisplayFor(modelItem => item.GS)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CA)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CV)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Saldo)</td>
+                                <td><span>@Html.DisplayFor(modelItem => item.Pontos)</span></td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <h6>Grupo B</h6>
+                <div class="club-standings overflow-scroll">
+                    <table class="table-standings">
+                      <tr>
+                        <th style="text-align: center">Posição</th>
+                        <th>Time</th>
+                        <th>J</th>
+                        <th>V</th>
+                        <th>D</th>
+                        <th>E</th>
+                        <th>GF</th>
+                        <th>GS</th>
+                        <th>CA</th>
+                        <th>CV</th>
+                        <th>Saldo</th>
+                        <th>P</th>
+                      </tr>
+                        @foreach (var item in Model.Where(x => x.Grupo == "B"))
+                        {
+                        <tr>
+                            <td style="text-align: center">@Html.DisplayFor(modelItem => item.Posicao)</td>
+                            @if (item.Posicao < 5)
+                            {
+                                <td class="up" style="text-align: left">
+
+                                    <i class="fa fa-circle" aria-hidden="true"></i>
+                                    <span class="team"><img src="/images/soccer/@Html.DisplayFor(modelItem => item.Logo)" width="30" height="30" alt="team-logo"></span> <span>@Html.DisplayFor(modelItem => item.Time)</span>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="none" style="text-align: left">
+
+                                    <i class="fa fa-circle" aria-hidden="true"></i>
+                                    <span class="team"><img src="/images/soccer/@Html.DisplayFor(modelItem => item.Logo)" width="30" height="30" alt="team-logo"></span> <span>@Html.DisplayFor(modelItem => item.Time)</span>
+                                </td>
+                            }
+                            <td>@Html.DisplayFor(modelItem => item.Jogos)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Vitorias)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Derrotas)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Empates)</td>
+                            <td>@Html.DisplayFor(modelItem => item.GF)</td>
+                            <td>@Html.DisplayFor(modelItem => item.GS)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CA)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CV)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Saldo)</td>
+                            <td><span>@Html.DisplayFor(modelItem => item.Pontos)</span></td>
+                        </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

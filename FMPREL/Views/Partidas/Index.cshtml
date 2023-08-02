@@ -1,0 +1,83 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "Partidas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--BREADCRUMBS BEGIN-->
+<section class="image-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info">
+                    <div class="wrap">
+                        <ul class="breadcrumbs">
+                            <li><a href="@Url.Action("Index", "Home")">Inicio</a>/</li>
+                            <li>Partidas</li>
+                        </ul>
+                        <h1>Rodadas</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--BREADCRUMBS END-->
+
+
+<section class="standing-table-wrap">
+    <!--CHAMPIONSHIP MATCH WRAP BEGIN -->
+    <div class="tab-item match-wrap tab-pane" id="matches">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" id="divRodada">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" role="dialog" id="loading">
+    <div class="modal-dialog modal-md">
+        
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            rodada(@ViewBag.atual);
+        });
+
+        function mostrarMelhores(id) {
+            $('#jogo_' + id).hide();
+            if ($('#melhores_' + id).is(":visible"))
+                $('#melhores_' + id).hide();
+            else
+                $('#melhores_' + id).show();
+        }
+
+        function mostrarGols(id) {
+            $('#melhores_' + id).hide();
+            if ($('#jogo_' + id).is(":visible"))
+                $('#jogo_' + id).hide();
+            else
+                $('#jogo_' + id).show();
+        }
+
+        function rodada(numero) {
+            $('#loading').modal('show');
+
+            $.ajax({
+                url: '/Partidas/Rodada',
+                data: 'rodada=' + numero,
+                success: function (data) {
+                    $('#loading').modal('hide');
+                    $('#divRodada').html(data);
+                }
+            })
+        }
+    </script>
+}

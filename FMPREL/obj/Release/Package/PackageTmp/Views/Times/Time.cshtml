@@ -1,0 +1,50 @@
+﻿@model FMPREL.Models.Time
+
+@{
+    ViewBag.Title = "Time";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="main-players-stat bg-cover">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <h4 class="hockey-stats-h4">Partidas</h4>
+                <div class="main-lates-matches" id="partidas">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h4 class="hockey-stats-h4">Gols / Jogadores</h4>
+                <div class="team-best-player">
+                    <div class="tab-content">
+                        <div class="best-players-list tab-pane active" id="goals">
+                            @foreach (var item in Model.Jogadores)
+                            {
+                                <a class="item">
+                                    <span class="number">@Html.DisplayFor(modelItem => item.QuantidadeGols)</span>
+                                    <span>@Html.DisplayFor(modelItem => item.Nome)</span>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                type: 'POST',
+                url: '/Times/Partidas',
+                data: 'id=' +@Model.Id,
+                success: function (data) {
+                    $('#partidas').html(data)
+                }
+            })
+        });
+
+    </script>
+
+}

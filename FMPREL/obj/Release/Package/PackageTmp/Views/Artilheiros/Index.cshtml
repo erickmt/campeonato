@@ -1,0 +1,37 @@
+﻿@model IEnumerable<FMPREL.Models.JogadorDto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="main-players-stat bg-cover">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <h4 class="hockey-stats-h4">Artilheiros</h4>
+                <div class="team-best-player">
+                    <div class="">
+                        <ul class="player-filters" role="tablist">
+                            <li class="active">
+                                <a role="tab" data-toggle="tab">gols</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="best-players-list tab-pane active" id="goals">
+                            @foreach (var item in Model)
+                            {
+                                <a class="item" style="padding-left:10px">
+                                    <span>@Html.DisplayFor(modelItem => item.Nome)</span>
+                                    <span class="achievement">@Html.DisplayFor(modelItem => item.Quantidade)</span>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

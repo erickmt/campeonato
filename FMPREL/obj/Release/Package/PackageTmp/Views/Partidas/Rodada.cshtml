@@ -1,0 +1,103 @@
+﻿@model IEnumerable<FMPREL.Controllers.DtoJogoRodada>
+
+<h4>RODADA @ViewBag.atual</h4>
+
+<div class="main-lates-matches">
+    <div class="pagination-wrap">
+        <ul class="pagination">
+            <li><a onclick="rodada(@ViewBag.anterior)"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+            @if (@ViewBag.anterior != null)
+            {
+                <li><a onclick="rodada(@ViewBag.anterior)">@ViewBag.anterior</a></li>
+            }
+            <li class="active"><a href="">@ViewBag.atual</a></li>
+            @if (@ViewBag.proximo != null)
+            {
+                <li><a onclick="rodada(@ViewBag.proximo)">@ViewBag.proximo</a></li>
+                <li><a onclick="rodada(@ViewBag.proximo)"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+            }
+        </ul>
+    </div>
+    <div id="rodadas">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <a class="item">
+                    <span class="championship"> @Html.DisplayFor(modelItem => item.data)</span>
+                    <span class="teams-wrap">
+                        <span class="team"><span><img src="~/images/soccer/@Html.DisplayFor(modelItem => item.logoA)" alt="team-logo"></span><span> @Html.DisplayFor(modelItem => item.timeA)</span></span>
+                        <span class="score"><span> @Html.DisplayFor(modelItem => item.placar)</span></span>
+                        <span class="team1"><span> @Html.DisplayFor(modelItem => item.timeB)</span><span><img src="~/images/soccer/@Html.DisplayFor(modelItem => item.logoB)" alt="team-logo"></span></span>
+                    </span>
+                    <div class="row" style='font-size: 6px'>
+                        <div class="col-sm-6" style='text-align:right; padding: 5px' onclick="mostrarMelhores(@Html.DisplayFor(modelItem => item.id))">
+                            melhores <img src="~/images/common/estrela.jpg"  alt="melhores">
+                        </div>
+                        <div class="col-sm-6" style="padding: 5px" onclick="mostrarGols(@Html.DisplayFor(modelItem => item.id))">
+                            <img src="~/images/common/timeline-goal.jpg" alt="gols"> gols
+                        </div>
+                    </div>
+                </a>
+                <div class="row" id="melhores_@Html.DisplayFor(modelItem => item.id)" style="margin:5px" hidden>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <center>
+                                <p>
+                                    GOLEIRO: @Html.DisplayFor(modelItem => item.goleiro)
+                                </p>
+                                <p>
+                                    JOGADOR: @Html.DisplayFor(modelItem => item.jogador)
+                                </p>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="jogo_@Html.DisplayFor(modelItem => item.id)" style="margin:5px" hidden>
+                    <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">@Html.DisplayFor(modelItem => item.timeA)</div>
+                            <div class="panel-body">
+                                <center>
+                                    <ul>
+                                        @foreach (var gols in item.golsA)
+                                        {
+                                            <li>
+                                                @Html.DisplayFor(a => gols.Nome) (@Html.DisplayFor(a => gols.Quantidade))
+                                            </li>
+                                        }
+                                    </ul>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">@Html.DisplayFor(modelItem => item.timeB)</div>
+                            <div class="panel-body">
+                                <center>
+                                    <ul>
+                                        @foreach (var gols in item.golsB)
+                                        {
+                                            <li>
+                                                @Html.DisplayFor(a => gols.Nome) (@Html.DisplayFor(a => gols.Quantidade))
+                                            </li>
+                                        }
+                                    </ul>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+
+            <span class="small-text">Error <br>Nenhum jogo econtrado</span>
+
+
+        }
+    </div>
+</div>
+

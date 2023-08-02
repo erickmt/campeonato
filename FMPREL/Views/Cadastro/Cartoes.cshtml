@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Cartoes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--BREADCRUMBS BEGIN-->
+<section class="image-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info">
+                    <div class="wrap">
+                        <ul class="breadcrumbs">
+                            <li><a href="@Url.Action("Index", "Home")">Inicio</a>/</li>
+                            <li>Cartões</li>
+                        </ul>
+                        <h1>Suspensos e Pendurados</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--BREADCRUMBS END-->
+<!--CHECKOUT WRAP BEGIN-->
+<section class="checkout-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Times</h4>
+                <div class="customer-info">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="item">
+                                <label>
+                                    <span>Jogo <i>*</i></span>
+                                    @Html.DropDownList("Jogos", (ViewBag.Jogos as SelectList), htmlAttributes: new { @class = "basic form-control", onchange = @"buscarJogadores();" })
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-5" id="divJogadores">
+                        </div>
+                        <div class="col-md-2">
+                            <div class="item">
+                                <label>
+                                    <span>Vermelho</span>
+                                    <input class="form-control" type="checkbox" name="vermelho" id="vermelho" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="item">
+                                <label>
+                                    <span>Quantidade</span>
+                                    <input class="form-control" type="number" value="1" min="1" max="2" name="quantidade" id="quantidade" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cart-total col-md-3" >
+                            <button onclick="inserirCartao()" id="inserir" style="margin-top:4px" class="proceed">Inserir<i class="fa fa-check" aria-hidden="true"></i></button>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="alert team-alert fade in" role="alert" id="alerta" hidden>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script type="text/javascript">
+        function buscarJogadores() {
+            $.ajax({
+                type: 'POST',
+                url: '/Cadastro/Jogadores',
+                data: 'jogo_id=' + $('#Jogos').val(),
+                success: function (data) {
+                    $('#divJogadores').html(data);
+                }
+            });
+        }
+
+        function inserirCartao() {
+            var dados = 'jogo_id=' + $('#Jogos').val() + '&jogadorId=' + $('#Jogadores').val() + '&quantidade=' + $('#quantidade').val() + '&vermelho=' + $('#vermelho').is(':checked');
+            $.ajax({
+                type: 'POST',
+                url: '/Cadastro/InserirCartoes',
+                data: dados,
+                success: function (data) {
+                    $('#quantidade').val(1)
+                    $('#alerta').show();
+                    $('#alerta').append('<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa - close" aria-hidden="true"></span></button>' + data.mensagem +"\n");
+                }
+            });
+        }
+
+        buscarJogadores();
+
+    </script>
+}
+
+

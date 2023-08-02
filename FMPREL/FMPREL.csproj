@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EF4B2B66-855F-4B38-B9F7-2B52DD9BDC3F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FMPREL</RootNamespace>
+    <AssemblyName>FMPREL</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.21.9.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.21.9\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.5\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.5\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=8.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.1.0\lib\net48\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework, Version=8.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.EntityFramework.8.1.0\lib\net462\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.4.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ZstdSharp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.7.1\lib\net461\ZstdSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArtilheirosController.cs" />
+    <Compile Include="Controllers\CadastroController.cs" />
+    <Compile Include="Controllers\CartoesController.cs" />
+    <Compile Include="Controllers\ControleDeAcessos.cs" />
+    <Compile Include="Controllers\EliminatoriasController.cs" />
+    <Compile Include="Controllers\GruposController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MelhoresController.cs" />
+    <Compile Include="Controllers\PartidasController.cs" />
+    <Compile Include="Controllers\TimesController.cs" />
+    <Compile Include="Models\AcessoAsPaginas.cs" />
+    <Compile Include="Models\CartaoAmarelo.cs" />
+    <Compile Include="Models\CartaoVermelho.cs" />
+    <Compile Include="Models\DbModel.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Gol.cs" />
+    <Compile Include="Models\GrupoDto.cs" />
+    <Compile Include="Models\Jogador.cs" />
+    <Compile Include="Models\JogadorDto.cs" />
+    <Compile Include="Models\Jogo.cs" />
+    <Compile Include="Models\MelhorJogador.cs" />
+    <Compile Include="Models\Rodada.cs" />
+    <Compile Include="Models\Time.cs" />
+    <Compile Include="Models\Torneio.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css-min\owl.video.play.html" />
+    <Content Include="css-min\soccer.min.css" />
+    <Content Include="css\library\bootstrap.css" />
+    <Content Include="dev-assets\demo-switcher.css" />
+    <Content Include="dev-assets\demo-switcher.js" />
+    <Content Include="dev-assets\preloader-default.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont3e6e.html" />
+    <Content Include="fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular-2.html" />
+    <Content Include="fonts\glyphicons-halflings-regular.html" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="images\common\am-trophey.png" />
+    <Content Include="images\common\am-trophey1.png" />
+    <Content Include="images\common\am-trophey2.png" />
+    <Content Include="images\common\Arbeiderpartiet-logo.png" />
+    <Content Include="images\common\created-icon.png" />
+    <Content Include="images\common\cup.png" />
+    <Content Include="images\common\cup1.png" />
+    <Content Include="images\common\cup2.png" />
+    <Content Include="images\common\en-flag.png" />
+    <Content Include="images\common\estrela.jpg" />
+    <Content Include="images\common\fr-flag.png" />
+    <Content Include="images\common\juggernaut_icon.png" />
+    <Content Include="images\common\news-youtube-icon.png" />
+    <Content Include="images\common\ru-flag.png" />
+    <Content Include="images\common\soccer-match-field.jpg" />
+    <Content Include="images\common\Subject-Flat.png" />
+    <Content Include="images\common\success-icon.png" />
+    <Content Include="images\common\success-icon1.png" />
+    <Content Include="images\common\timeline-goal.jpg" />
+    <Content Include="images\common\timeline-reload.png" />
+    <Content Include="images\common\timeline-yellow-card.png" />
+    <Content Include="images\common\wether-sun.png" />
+    <Content Include="images\favicon.ico" />
+    <Content Include="images\soccer\about-bg.jpg" />
+    <Content Include="images\soccer\aguabranca.png" />
+    <Content Include="images\soccer\amateurs-main-match-bg.jpg" />
+    <Content Include="images\soccer\amateurs-match-shedule-bg.jpg" />
+    <Content Include="images\soccer\amazonas.png" />
+    <Content Include="images\soccer\amazonas2.png" />
+    <Content Include="images\soccer\arena-img.jpg" />
+    <Content Include="images\soccer\brasilindustrial.png" />
+    <Content Include="images\soccer\broad-cup-img.jpg" />
+    <Content Include="images\soccer\call-toaction.jpg" />
+    <Content Include="images\soccer\campeao11.jpg" />
+    <Content Include="images\soccer\campeao12.jpg" />
+    <Content Include="images\soccer\campeao13.jpg" />
+    <Content Include="images\soccer\campeao13_2.jpg" />
+    <Content Include="images\soccer\campeao14.jpg" />
+    <Content Include="images\soccer\campeao15.jpg" />
+    <Content Include="images\soccer\campeao16.jpg" />
+    <Content Include="images\soccer\campeao18.jpg" />
+    <Content Include="images\soccer\campeao19.jpg" />
+    <Content Include="images\soccer\campeao22.jpg" />
+    <Content Include="images\soccer\cart-offer.jpg" />
+    <Content Include="images\soccer\central.png" />
+    <Content Include="images\soccer\champ-logo.png" />
+    <Content Include="images\soccer\champ-title-bg.jpg" />
+    <Content Include="images\soccer\championship-ico.jpg" />
+    <Content Include="images\soccer\club-stuff-bg.jpg" />
+    <Content Include="images\soccer\club-top-bg.jpg" />
+    <Content Include="images\soccer\coming-bg.jpg" />
+    <Content Include="images\soccer\coming-logo.png" />
+    <Content Include="images\soccer\contact-office-img.jpg" />
+    <Content Include="images\soccer\contacts-map.jpg" />
+    <Content Include="images\soccer\donation-item-img.jpg" />
+    <Content Include="images\soccer\ebenezer.png" />
+    <Content Include="images\soccer\eldorado.png" />
+    <Content Include="images\soccer\error-bg.jpg" />
+    <Content Include="images\soccer\error-logo.png" />
+    <Content Include="images\soccer\escudo.png" />
+    <Content Include="images\soccer\flavioMarques.png" />
+    <Content Include="images\soccer\footer-bg.jpg" />
+    <Content Include="images\soccer\footer-logo.png" />
+    <Content Include="images\soccer\hot-bg.png" />
+    <Content Include="images\soccer\inst-img3.jpg" />
+    <Content Include="images\soccer\jardimAmerica.png" />
+    <Content Include="images\soccer\laguna.png" />
+    <Content Include="images\soccer\lang-arrow.png" />
+    <Content Include="images\soccer\linderpool.png" />
+    <Content Include="images\soccer\logo.png" />
+    <Content Include="images\soccer\logo2.png" />
+    <Content Include="images\soccer\logo2_.png" />
+    <Content Include="images\soccer\luzEvida.png" />
+    <Content Include="images\soccer\main-awards-bg.jpg" />
+    <Content Include="images\soccer\main-slider.jpg" />
+    <Content Include="images\soccer\memorial.png" />
+    <Content Include="images\soccer\nevescentro.png" />
+    <Content Include="images\soccer\next-match-bg.jpg" />
+    <Content Include="images\soccer\novaalianca.png" />
+    <Content Include="images\soccer\oitava.png" />
+    <Content Include="images\soccer\oitavaCastelo.png" />
+    <Content Include="images\soccer\page-header-bg.jpg" />
+    <Content Include="images\soccer\petrolandia.png" />
+    <Content Include="images\soccer\player-stat-bg.jpg" />
+    <Content Include="images\soccer\quinta.png" />
+    <Content Include="images\soccer\rating-star.png" />
+    <Content Include="images\soccer\riacho.png" />
+    <Content Include="images\soccer\serenos.png" />
+    <Content Include="images\soccer\setima.png" />
+    <Content Include="images\soccer\sponsor-bg.jpg" />
+    <Content Include="js\advanced-smil.js" />
+    <Content Include="js\anchor.js" />
+    <Content Include="js\animate-donut.js" />
+    <Content Include="js\bi-polar-diagram.js" />
+    <Content Include="js\carousel.js" />
+    <Content Include="js\champions.js" />
+    <Content Include="js\circle-bar.js" />
+    <Content Include="js\diagram.js" />
+    <Content Include="js\donut-chart.js" />
+    <Content Include="js\footer_slides.js" />
+    <Content Include="js\gauge-chart.js" />
+    <Content Include="js\header.js" />
+    <Content Include="js\horizontal-bar.js" />
+    <Content Include="js\jquery.team-coundown.js" />
+    <Content Include="js\label-placement-diagram.js" />
+    <Content Include="js\landing_carousel.js" />
+    <Content Include="js\landing_mainnews_slider.js" />
+    <Content Include="js\landing_sport_standings.js" />
+    <Content Include="js\library\bootstrap.js" />
+    <Content Include="js\library\Chart.js" />
+    <Content Include="js\library\chartist-plugin-legend.js" />
+    <Content Include="js\library\chartist-plugin-pointlabels.js" />
+    <Content Include="js\library\chartist-plugin-threshold.js" />
+    <Content Include="js\library\chartist.js" />
+    <Content Include="js\library\fancySelect.js" />
+    <Content Include="js\library\imagesloaded.pkgd.js" />
+    <Content Include="js\library\isotope.pkgd.js" />
+    <Content Include="js\library\jcarousel.connected-carousels.js" />
+    <Content Include="js\library\jquery-ui.js" />
+    <Content Include="js\library\jquery.bracket.min.js" />
+    <Content Include="js\library\jquery.jcarousel.js" />
+    <Content Include="js\library\jquery.js" />
+    <Content Include="js\library\jquery.sticky.js" />
+    <Content Include="js\library\owl.carousel.js" />
+    <Content Include="js\library\progressbar.js" />
+    <Content Include="js\main-club-gallery.js" />
+    <Content Include="js\main.js" />
+    <Content Include="js\matches-slider.js" />
+    <Content Include="js\matches_broadcast_listing.js" />
+    <Content Include="js\match_galery.js" />
+    <Content Include="js\news-line.js" />
+    <Content Include="js\pick-circle.js" />
+    <Content Include="js\player_test.js" />
+    <Content Include="js\preloader.js" />
+    <Content Include="js\product-slider.js" />
+    <Content Include="js\radar.js" />
+    <Content Include="js\shop-price-filter.js" />
+    <Content Include="js\slider.js" />
+    <Content Include="js\stacked-bar.js" />
+    <Content Include="js\standings.js" />
+    <Content Include="js\svg-path.js" />
+    <Content Include="js\timeseries.js" />
+    <Content Include="js\treshold.js" />
+    <Content Include="js\twitterslider.js" />
+    <Content Include="js\video_slider.js" />
+    <Content Include="js\visible.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="fonts\glyphicons-halflings-regulard41d.eot" />
+    <None Include="packages.config" />
+    <Content Include="Views\Artilheiros\Index.cshtml" />
+    <Content Include="Views\Melhores\Index.cshtml" />
+    <Content Include="Views\Partidas\Index.cshtml" />
+    <Content Include="Views\Times\Index.cshtml" />
+    <Content Include="Views\Eliminatorias\Index.cshtml" />
+    <Content Include="Views\Grupos\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Cadastro\Index.cshtml" />
+    <Content Include="Views\Cadastro\NovoJogo.cshtml" />
+    <Content Include="Views\Partidas\Rodada.cshtml" />
+    <Content Include="Views\Times\Time.cshtml" />
+    <Content Include="Views\Cadastro\Jogadores.cshtml" />
+    <Content Include="Views\Cadastro\Melhores.cshtml" />
+    <Content Include="Views\Times\Partidas.cshtml" />
+    <Content Include="Views\Cartoes\Index.cshtml" />
+    <Content Include="Views\Cadastro\Cartoes.cshtml" />
+    <Content Include="Views\Home\Breve.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58237</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58237/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
